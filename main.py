@@ -3,6 +3,27 @@ from datetime import datetime
 expenses = []
 budget = 0.0
 
+def load_expenses():
+    global expenses
+    file_name = 'expenses.txt'
+    print(f"Loading previous expenses from {file_name}")
+    try:
+        with open(file_name, 'r') as f:
+            for line in f:
+                date, category, amount, description = line.strip().split(',')
+                expenses.append({
+                    'date': date,
+                    'category': category,
+                    'amount': float(amount),
+                    'description': description,
+                })
+    except FileNotFoundError:
+        print('No previous expenses found.')
+    except Exception as e:
+        print(f'Error loading expenses: {e}')
+
+load_expenses()
+
 def get_valid_date(valid = True):
     date = input('What is the date of the expense? (YYYY-MM-DD)') if valid == True else input('Enter a valid date in the format YYYY-MM-DD')
     try:

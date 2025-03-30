@@ -1,1 +1,3 @@
 2024-05-01,travel,50.0,gas
+2024-03-04,food,50.04,dinner
+2025-01-12,house,340.34,electric bill
