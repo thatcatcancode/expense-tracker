@@ -6,7 +6,7 @@ budget = 0.0
 def load_expenses():
     global expenses
     file_name = 'expenses.txt'
-    print(f"Loading previous expenses from {file_name}")
+    print("\nLoading previous expenses...")
     try:
         with open(file_name, 'r') as f:
             for line in f:
