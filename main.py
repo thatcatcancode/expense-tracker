@@ -32,7 +32,8 @@ def menu():
     print("1. Add an expense")
     print("2. View expenses")
     print("3. Track budget")
-    print("4. Exit")
+    print("4. Save expenses")
+    print("5. Exit")
     
     choice = input("Enter your choice: ")
 
@@ -44,10 +45,23 @@ def menu():
         budget = get_valid_float('What is your total budget for the month?', True)
         track_budget(budget)
     elif choice == "4":
+        save_expenses()
+    elif choice == "5":
         print("Exiting program. Goodbye!")
     else:
         print("Invalid choice. Please try again.")
-    
+
+def save_expenses():
+    global expenses
+    if len(expenses) == 0:
+        print('No expenses to save.')
+        menu()
+    else:
+        with open('expenses.txt', 'w') as f:
+            for e in expenses:
+                f.write(f"{e['date']},{e['category']},{e['amount']},{e['description']}\n")
+        print('Expenses have been saved.')
+        menu()   
     
 
 def add_expense():
